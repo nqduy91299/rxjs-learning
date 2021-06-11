@@ -1,0 +1,12 @@
+.navbar {
+  .navbar-item {
+    cursor: pointer;
+    &:hover {
+      color: #a94f4f;
+    }
+
+    &.active {
+      color: #a94f4f;
+    }
+  }
+}

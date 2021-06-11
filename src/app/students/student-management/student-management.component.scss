@@ -1,0 +1,26 @@
+tr {
+  display: flex;
+
+  td:nth-child(1),
+  th:nth-child(1) {
+    flex: 20%;
+  }
+  td:nth-child(2),
+  th:nth-child(2) {
+    flex: 25%;
+  }
+  td:nth-child(3),
+  th:nth-child(3) {
+    flex: 15%;
+  }
+  td:nth-child(4),
+  th:nth-child(4) {
+    flex: 25%;
+  }
+  td:nth-child(5),
+  th:nth-child(5) {
+    display: flex;
+    justify-content: center;
+    flex: 15%;
+  }
+}
