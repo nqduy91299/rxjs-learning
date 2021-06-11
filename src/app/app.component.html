@@ -1,5 +1,8 @@
 <nav class="p-grid border-bottom">
-  <div class="p-col-12 p-md-8 p-md-offset-2 p-d-flex p-jc-between">
+  <div
+    class="p-col-12 p-md-8 p-md-offset-2 p-d-flex p-jc-between"
+    [style]="{ display: 'flex', justifyContent: 'space-between' }"
+  >
     <span
       class="p-text-bold p-px-3 p-py-2"
       [style]="{
@@ -11,7 +14,10 @@
     >
       Demo
     </span>
-    <ul class="navbar p-d-flex" [style]="{ listStyle: 'none' }">
+    <ul
+      class="navbar p-d-flex"
+      [style]="{ listStyle: 'none', display: 'flex' }"
+    >
       <li
         *ngFor="let nav of navList"
         routerLink="{{ nav.link }}"
