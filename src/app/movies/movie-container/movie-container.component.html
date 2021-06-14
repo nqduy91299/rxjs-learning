@@ -1,0 +1,55 @@
+<nav
+  class="p-py-2 p-mb-3"
+  [style]="{
+    borderBottom: '1px solid black',
+    position: 'sticky',
+    top: '0',
+    backgroundColor: 'white',
+    zIndex: '1000'
+  }"
+>
+  <div class="p-d-flex p-jc-between">
+    <div class="search">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="Search"
+          (keyup.enter)="searchMovie($event)"
+        />
+      </span>
+    </div>
+    <div class="options">
+      <div class="favorite" [style]="{ position: 'relative' }">
+        <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-heart"
+          class="p-button-rounded p-button-danger p-button-outlined"
+          (click)="showModalFavorite()"
+        ></button>
+        <span
+          [style]="{
+            position: 'absolute',
+            top: '0',
+            left: 'calc(100% - 10px)',
+            width: '20px',
+            height: '20px',
+            color: 'white',
+            backgroundColor: '#D32F2F',
+            borderRadius: '50px',
+            textAlign: 'center'
+          }"
+        >
+          {{ count }}
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<app-movies-favorite [(isShow)]="isShowFavorite"></app-movies-favorite>

@@ -20,8 +20,8 @@ export class AppComponent {
       link: '/std-management',
     },
     {
-      name: 'UI-Prime',
-      link: '/primeng',
+      name: 'Movies',
+      link: '/movies',
     },
   ];
   constructor() {}

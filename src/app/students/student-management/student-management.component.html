@@ -2,7 +2,7 @@
   pButton
   type="button"
   label="Add student"
-  (click)="showDialogCreate()"
+  (click)="showDialog(true)"
   class="p-my-3"
 ></button>
 
@@ -39,75 +39,6 @@
     </tr>
   </ng-template>
 </p-table>
-
-<p-dialog
-  [modal]="true"
-  position="top"
-  header="Add Student"
-  [(visible)]="isShowModalCreate"
-  [style]="{ width: '600px' }"
->
-  <div class="p-fluid p-d-flex p-flex-column">
-    <div [formGroup]="studentForm">
-      <div class="p-field">
-        <label for="name">Name</label>
-        <input id="name" type="text" pInputText formControlName="name" />
-      </div>
-      <div class="p-field">
-        <label for="age">Age</label>
-        <input id="age" type="number" pInputText formControlName="age" />
-      </div>
-      <div class="p-field">
-        <label for="address">Address</label>
-        <input id="address" type="text" pInputText formControlName="address" />
-      </div>
-    </div>
-  </div>
-  <p-footer>
-    <button pButton label="Save" (click)="addStudent()"></button>
-    <button
-      pButton
-      label="Cancel"
-      class="p-button-secondary"
-      (click)="isShowModalCreate = !isShowModalCreate"
-    ></button>
-  </p-footer>
-</p-dialog>
-
-<!-- EDIT -->
-<p-dialog
-  position="top"
-  header="Edit Student"
-  [(visible)]="isShowModalEdit"
-  [style]="{ width: '600px' }"
-  [modal]="true"
->
-  <div class="p-fluid p-d-flex p-flex-column">
-    <div [formGroup]="studentForm">
-      <div class="p-field">
-        <label for="name">Name</label>
-        <input id="name" type="text" pInputText formControlName="name" />
-      </div>
-      <div class="p-field">
-        <label for="age">Age</label>
-        <input id="age" type="number" pInputText formControlName="age" />
-      </div>
-      <div class="p-field">
-        <label for="address">Address</label>
-        <input id="address" type="text" pInputText formControlName="address" />
-      </div>
-    </div>
-  </div>
-  <p-footer>
-    <button pButton label="Save" data-id="2" (click)="editStudent()"></button>
-    <button
-      pButton
-      label="Cancel"
-      class="p-button-secondary"
-      (click)="isShowModalEdit = !isShowModalEdit; resetId()"
-    ></button>
-  </p-footer>
-</p-dialog>
 <p-confirmDialog
   [style]="{ width: '50vw' }"
   [baseZIndex]="10000"
@@ -115,3 +46,10 @@
 ></p-confirmDialog>
 
 <p-toast position="bottom-left"></p-toast>
+
+<app-info-modal
+  [(isShow)]="isShowModal"
+  (result)="resultModal($event)"
+  [idStd]="idStud"
+>
+</app-info-modal>

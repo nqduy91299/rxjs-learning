@@ -1,0 +1,10 @@
+.detail {
+  color: white;
+  .btn-love {
+    &.active {
+      color: white !important;
+      background-color: red !important;
+      border-color: red !important;
+    }
+  }
+}

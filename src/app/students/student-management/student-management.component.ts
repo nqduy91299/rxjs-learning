@@ -19,8 +19,7 @@ interface Col {
 })
 export class StudentManagementComponent implements OnInit {
   students;
-  isShowModalCreate: boolean = false;
-  isShowModalEdit: boolean = false;
+  isShowModal: boolean = false;
   cols: Col[] = [
     { field: 'id', header: 'Id' },
     { field: 'name', header: 'Name' },
@@ -28,13 +27,7 @@ export class StudentManagementComponent implements OnInit {
     { field: 'address', header: 'Address' },
   ];
 
-  studentForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    age: new FormControl(),
-    address: new FormControl(),
-  });
-
-  idEdit: number = null;
+  idStud: number | null = null;
   constructor(
     private studentService: StudentManagementService,
     private messageService: MessageService,
@@ -53,15 +46,14 @@ export class StudentManagementComponent implements OnInit {
     });
   }
 
-  addStudent() {
-    this.isShowModalCreate = false;
-    this.studentService.addStudent(this.studentForm.value).subscribe((res) => {
-      if (res.success) {
-        this.students = res.data;
-        this.showToast(res.success, res.message);
-        this.resetForm();
-      }
-    });
+  resultModal(res) {
+    this.resetId();
+    if (res.success) {
+      this.students = res.data;
+      this.showToast(res.success, res.message);
+    } else {
+      this.showToast(res.success, res.message);
+    }
   }
 
   deleteStudent(id: number) {
@@ -80,41 +72,18 @@ export class StudentManagementComponent implements OnInit {
     });
   }
   editShow(id: number) {
-    this.studentService.getStudentById(id).subscribe((res) => {
-      if (res.success) {
-        this.studentForm.patchValue({
-          name: res.data.name,
-          age: res.data.age,
-          address: res.data.address,
-        });
-        this.idEdit = id;
-        this.showDialogEdit();
-      }
-    });
+    this.idStud = id;
+    this.showDialog();
   }
 
-  editStudent() {
-    this.studentService
-      .editStudent(this.idEdit, this.studentForm.value)
-      .subscribe((res) => {
-        if (res.success) {
-          this.students = res.data;
-          this.isShowModalEdit = false;
-          this.resetId();
-          this.showToast(res.success, res.message);
-        }
-      });
+  showDialog(isCreate: boolean = false) {
+    if (isCreate) {
+      this.idStud = null;
+    }
+    this.isShowModal = true;
   }
-
-  showDialogCreate() {
-    this.isShowModalCreate = true;
-  }
-  showDialogEdit() {
-    this.isShowModalEdit = true;
-  }
-
   resetId() {
-    this.idEdit = null;
+    this.idStud = null;
   }
 
   showToast(isSuccess, msg) {
@@ -128,9 +97,5 @@ export class StudentManagementComponent implements OnInit {
       summary: isSuccess ? config[0].summary : config[1].summary,
       detail: msg,
     });
-  }
-
-  resetForm() {
-    this.studentForm.reset();
   }
 }

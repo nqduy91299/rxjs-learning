@@ -1,0 +1,25 @@
+<div
+  class="item p-my-1 p-p-1 p-d-flex"
+  [style]="{ borderBottom: '1px solid var(--bluegray-100)' }"
+>
+  <img [src]="srcImg" alt="img" width="70" />
+  <div class="p-mx-2">
+    <h2 class="">{{ movie.title }}</h2>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Detail"
+      [ngStyle]="{ backgroundColor: 'var(--blue-500)' }"
+      class="p-button-rounded p-mx-1"
+    ></button>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Remove"
+      class="p-button-rounded p-button-danger p-mx-1"
+      (click)="remove()"
+    ></button>
+  </div>
+</div>
