@@ -1,0 +1,11 @@
+<div class="p-grid" *ngIf="movies$ | async as movies">
+  <div class="p-col-12" [style]="{ color: 'red' }">
+    <h2>Upcoming movies</h2>
+  </div>
+  <div class="p-sm-2 p-md-3" *ngFor="let movie of movies">
+    <app-poster
+      [movie]="movie"
+      [isFavorite]="isFavorite(movie.id)"
+    ></app-poster>
+  </div>
+</div>

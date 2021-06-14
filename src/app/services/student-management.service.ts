@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Response } from '../models/response.model';
 import { Student } from '../models/student.model';
 const STUDENTS: Student[] = [
@@ -28,11 +29,6 @@ const STUDENTS: Student[] = [
     address: 'Ho Chi Minh',
   },
 ];
-interface studentAdd {
-  name: string;
-  age: number;
-  address: string;
-}
 @Injectable({
   providedIn: 'root',
 })

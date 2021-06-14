@@ -1,0 +1,28 @@
+<p-dialog
+  position="top-right"
+  header="Favorite list"
+  [(visible)]="isShow"
+  [style]="{ width: '600px' }"
+  (onHide)="closeModal()"
+>
+  <div class="p-dialog-content">
+    <div class="p-d-flex p-flex-column">
+      <app-movie-favorite-item *ngFor="let movie of movies" [movie]="movie">
+      </app-movie-favorite-item>
+      <span *ngIf="movies.length < 1" [style]="{ fontStyle: 'italic' }">
+        Empty list
+      </span>
+    </div>
+  </div>
+  <p-footer>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Clear all"
+      class="p-button-rounded p-button-danger"
+      (click)="removeAll()"
+      [disabled]="movies.length < 1"
+    ></button>
+  </p-footer>
+</p-dialog>

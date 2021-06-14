@@ -1,0 +1,33 @@
+<p-dialog
+  [modal]="true"
+  position="top"
+  header="Add Student"
+  [(visible)]="isShow"
+  [style]="{ width: '600px' }"
+>
+  <div class="p-fluid p-d-flex p-flex-column">
+    <div [formGroup]="studentForm">
+      <div class="p-field">
+        <label for="name">Name</label>
+        <input id="name" type="text" pInputText formControlName="name" />
+      </div>
+      <div class="p-field">
+        <label for="age">Age</label>
+        <input id="age" type="number" pInputText formControlName="age" />
+      </div>
+      <div class="p-field">
+        <label for="address">Address</label>
+        <input id="address" type="text" pInputText formControlName="address" />
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <button pButton label="Save" (click)="saveClick()"></button>
+    <button
+      pButton
+      label="Cancel"
+      class="p-button-secondary"
+      (click)="closeModal()"
+    ></button>
+  </p-footer>
+</p-dialog>
