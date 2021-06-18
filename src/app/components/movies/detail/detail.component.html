@@ -109,3 +109,23 @@
 <ng-template #noContent>
   <span [style]="{ fontStyle: 'italic' }"> Not found </span>
 </ng-template>
+
+<div class="p-grid">
+  <div class="p-col-12">
+    <h2>Trailer</h2>
+  </div>
+  <div
+    class="p-col-12 p-px-3 p-d-flex p-jc-center"
+    *ngFor="let item of videoTrailer$ | async"
+  >
+    <iframe
+      width="60%"
+      height="300"
+      [src]="'https://www.youtube.com/embed/' + item.key | urlEncoder"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>

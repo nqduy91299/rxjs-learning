@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailComponent } from './movies/detail/detail.component';
-import { HomeComponent } from './movies/home/home.component';
-import { MovieContainerComponent } from './movies/movie-container/movie-container.component';
-import { SimpleObservableComponent } from './rxjs/simple-observable/simple-observable.component';
-import { StudentManagementComponent } from './students/student-management/student-management.component';
+import { DetailComponent } from './components/movies/detail/detail.component';
+import { HomeComponent } from './components/movies/home/home.component';
+import { MovieContainerComponent } from './components/movies/movie-container/movie-container.component';
+import { SimpleObservableComponent } from './components/rxjs/simple-observable/simple-observable.component';
+import { StudentManagementComponent } from './components/students/student-management/student-management.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/std-management', pathMatch: 'full' },

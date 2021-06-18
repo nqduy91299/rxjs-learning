@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/models/movies.model';
@@ -19,12 +20,13 @@ export class DetailComponent implements OnInit {
   isShow: boolean = false;
   isLove: boolean;
   videoTrailer$: Observable<Trailer[]>;
-  youTubeUrl: string = 'https://youtube.com/embed/';
+  youTubeUrl: string = 'https://www.youtube.com/embed/';
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieDbService,
-    private favoriteService: FavoriteMoviesService
+    private favoriteService: FavoriteMoviesService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class DetailComponent implements OnInit {
     this.movie$ = this.getDetail(this.id);
     this.isLove = this.checkLove(this.id);
     this.videoTrailer$ = this.getTrailer(this.id);
+    this.videoTrailer$.subscribe((res) => console.log(res));
   }
 
   getDetail(id: number): Observable<Movie> {
